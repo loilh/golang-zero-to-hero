@@ -52,7 +52,7 @@ func (db *DB) HealthCheck(ctx context.Context) error {
 	var result int
 	err := db.Pool.QueryRow(ctx, "select 1").Scan(&result)
 	if err != nil {
-		return fmt.Errorf("database: fail to ping: %w", err)
+		return fmt.Errorf("database: health check query failed: %w", err)
 	}
 
 	return nil
